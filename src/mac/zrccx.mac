@@ -1,6 +1,6 @@
 ROUTINE zrccx [Type=MAC]
 zrccx ; # Run Container Command eXecution
-	write "connect to Run Control Command eXecutor",!
+	write "start Run Container Command eXecution",!
 		,"server = localhost,  port = 6666",!
 		
 	set port=6666
@@ -17,3 +17,4 @@ act
 	use tcp write cmd,! 
 	if stop close tcp quit
 	goto act 
+	
