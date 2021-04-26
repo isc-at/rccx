@@ -1,0 +1,19 @@
+ROUTINE zrccx [Type=MAC]
+zrccx ; # Run Container Command eXecution
+	write "connect to Run Control Command eXecutor",!
+		,"server = localhost,  port = 6666",!
+		
+	set port=6666
+		, tcp="|TCP|"_port
+		, stop=0
+	open tcp:("127.0.0.1":port):2
+	else  write " eXecutor is not reachable ",!!  quit
+	write "Enter bash command [.=exit, *** = stop executor & exit]",!,"?"
+act
+	use 0 read "?> :",cmd,!,"?"
+	if cmd="***" set cmd="###stop###",stop=2
+	else  if cmd="." set cmd="#",stop=1
+	else  if cmd="" goto act
+	use tcp write cmd,! 
+	if stop close tcp quit
+	goto act 

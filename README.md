@@ -1,64 +1,89 @@
-## intersystems-objectscript-template
-This is a template for InterSystems ObjectScript Github repository.
-The template goes also with a few files which let you immedietly compile your ObjecScript files in InterSystems IRIS Community Edition in a docker container
+### Why SSH ?
+If you do not have direct access to the server that runs your IRIS Docker container   
+you still may require access to the container outside "iris session" or "WebTerminal".   
+With ans SSH terminal (PuTTY, KiTTY,.. ) you get access inside Docker, and then, depending    
+on your needs you run "iris session iris" or display/manipulate files directly.
 
-## Prerequisites
+##### Note:
+This is not meant to be the default access for the average application user  
+but the emergency backdoor for System Management, Support and Development. 
+
+This project is based on templates for InterSystems ObjectScript Github repository.  
+There a few siginifcant extensions:  
+- docker-compose.yaml exposes port 22 for SSH   
+- Dockerfile installs SSH server and prepares Server start. You may observe    
+  a significant bunch up updates as the underlying Ubuntu is not very fresh    
+- to login into your container user **irisrsowner** got a password visible to you   
+  that is required for login over SSH. User root is not allowed for login.   
+ 
+The rest is pretty default for InterSystems IRIS Community Edition in a docker container.
+### Prerequisites  
 Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
-
-## Installation 
-
-Clone/git pull the repo into any local directory
-
+### Installation   
+Clone/git pull the repo into any local directory  
 ```
-$ git clone https://github.com/intersystems-community/objectscript-docker-template.git
+$ git clone https://github.com/rcemper/SSH-for-IRIS-container.git   
 ```
-
 Open the terminal in this directory and run:
-
 ```
 $ docker-compose build
 ```
-
-3. Run the IRIS container with your project:
-
+Run the IRIS container with
 ```
 $ docker-compose up -d
 ```
-
-## How to Test it
-
-Open IRIS terminal:
-
+### How to Test it:
+If you didn't assign a fixed port to projected container port 22 you may run
 ```
-$ docker-compose exec iris iris session iris
-USER>write ##class(dc.PackageSample.ObjectScript).Test()
+$ docker ps
+e37392a1c7c3   ssh-for-iris-container   "/bin/sh -c '/iris-m…"   2 hours ago   Up 2 hours (unhealthy)   
+2188/tcp, 54773/tcp,    
+0.0.0.0:41022->22/tcp, 0.0.0.0:41773->1972/tcp, 0.0.0.0:42773->52773/tcp, 0.0.0.0:49716->53773/tcp   
 ```
-## How to start coding
-This repository is ready to code in VSCode with ObjectScript plugin.
-Install [VSCode](https://code.visualstudio.com/), [Docker](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker) and [ObjectScript](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript) plugin and open the folder in VSCode.
-Open /src/cls/PackageSample/ObjectScript.cls class and try to make changes - it will be compiled in running IRIS docker container.
-![docker_compose](https://user-images.githubusercontent.com/2781759/76656929-0f2e5700-6547-11ea-9cc9-486a5641c51d.gif)
+and see the assigned_port for port 22 in container (here it's 41022).  
+Next, you connect with PuTTY over SSH to server:assigned_port   
+Log in as **irisowner** + the PW of your choice and you are in your container.   
 
-Feel free to delete PackageSample folder and place your ObjectScript classes in a form
-/src/Package/Classname.cls
-[Read more about folder setup for InterSystems ObjectScript](https://community.intersystems.com/post/simplified-objectscript-source-folder-structure-package-manager)
+This is similar as with **docker-compose exec iris sh**  in a local docker instance.   
 
-The script in Installer.cls will import everything you place under /src into IRIS.
+### Example:
+```
+login as: irisowner
+irisowner@localhost's password:
+Welcome to Ubuntu 18.04.4 LTS (GNU/Linux 5.4.72-microsoft-standard-WSL2 x86_64)
 
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/advantage
 
-## What's inside the repository
+This system has been minimized by removing packages and content that are
+not required on a system that users do not log into.
 
-### Dockerfile
+To restore this content, you can run the 'unminimize' command.
+Last login: Sat Apr 17 11:10:56 2021 from 172.18.0.1
+$
+$ iris view
 
-The simplest dockerfile which starts IRIS and imports code from /src folder into it.
-Use the related docker-compose.yml to easily setup additional parametes like port number and where you map keys and host folders.
+Instance 'IRIS'   (default)
+        directory:    /usr/irissys
+        versionid:    2020.4.0.524.0com
+        datadir:      /usr/irissys
+        conf file:    iris.cpf  (SuperServer port = 1972, WebServer = 52773)
+        status:       running, since Sat Apr 17 09:12:38 2021
+        state:        ok
+        product:      InterSystems IRIS
 
+$ iris session iris -U "%SYS"
+Node: e37392a1c7c3, Instance: IRIS
+%SYS>zpm
+zpm:%SYS>list
+language-extender 0.0.1
+webterminal 4.9.2
+zpm 0.2.14
+zpm:%SYS>q
 
-### .vscode/settings.json
+%SYS>h
+$
+```
 
-Settings file to let you immedietly code in VSCode with [VSCode ObjectScript plugin](https://marketplace.visualstudio.com/items?itemName=daimor.vscode-objectscript))
-
-### .vscode/launch.json
-Config file if you want to debug with VSCode ObjectScript
-
-[Read about all the files in this artilce](https://community.intersystems.com/post/dockerfile-and-friends-or-how-run-and-collaborate-objectscript-projects-intersystems-iris)
+[Article in DC](https://community.intersystems.com/post/simplified-objectscript-source-folder-structure-package-manager)
