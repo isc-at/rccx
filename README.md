@@ -1,24 +1,24 @@
-This example show how to bash commands outside IRIS.
-It's a low comfort tool for testing and devolpment and not for production 
+This example shows how to execute bash commands outside IRIS.   
+It's a low comfort tool for testing and devolpment and not for production.   
 
 ### Prerequisites  
-Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.
+Make sure you have [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and [Docker desktop](https://www.docker.com/products/docker-desktop) installed.   
 ### Installation   
 Clone/git pull the repo into any local directory  
 ```
 $ git clone https://github.com/rcemper/SSH-for-IRIS-container.git   
 ```
-Open the terminal in this directory and run:
+Open the terminal in this directory and run:   
 ```
 $ docker-compose build
 ```
-Run the IRIS container with
+Run the IRIS container with   
 ```
 $ docker-compose up -d
 ```
-### How to use it:
+### How to use it:   
 
-Login to WebTerminal
+Login to WebTerminal   
 ```
 WTv4.9.2 5611fa9229c9:IRIS:_SYSTEM        
 Welcome to WebTerminal! Type /help special command to see how to use all the features.  
@@ -51,6 +51,5 @@ Instance 'IRIS'   (default)
         state:        alert
         product:      InterSystems IRIS
 $
-
 ~~~
 [Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)
