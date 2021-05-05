@@ -28,9 +28,9 @@ Enter bash command [.=exit, *** = stop executor & exit]
   drwxr-xr-x   1 root      root         4096 May 23  2017 lib
   - - - - - - - 
   -rwxr-xr-x   1 root      root           41 Apr 26 10:11 rccx.sh
-```
-  __drwx------   1 root      root         4096 Oct 22  2020 root__
-```
+
+>>drwx------   1 root      root         4096 Oct 22  2020 root <<
+
   drwxr-xr-x   1 root      root         4096 Jan 16  2020 run
   drwxr-xr-x   1 root      root         4096 Feb  3  2020 sbin
   drwxr-xr-x   2 root      root         4096 Jan 12  2020 srv
@@ -43,19 +43,17 @@ Enter bash command [.=exit, *** = stop executor & exit]
 ~~~
 ??> :
 ??> :ls -la /root ; whoami
-??> :
 ~~~
-__```
+```
   ls: cannot open directory '/root': Permission denied
   irisowner
-```__
+```
 #### $ in postion 1 changes the view
 ~~~
 ??> :
 ??> :$ls -la /root ; whoami
-??> :
 ~~~   
-__```  
+``` 
   total 24
   drwx------ 1 root root 4096 Oct 22  2020 .
   drwxr-xr-x 1 root root 4096 May  5 15:36 ..
@@ -64,5 +62,5 @@ __```
   -rw-r--r-- 1 root root  176 Feb  3  2020 .wget-hsts
   -rw-r--r-- 1 root root  199 Oct 22  2020 waitISC.log
   root
-```__
+```
 Q.A.D.
