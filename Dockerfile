@@ -6,6 +6,7 @@ FROM $IMAGE
 USER root
 
 COPY py/* /
+RUN chmod 6755 /rccx
  
 ENTRYPOINT /iris-main -a /rccx.sh
 
