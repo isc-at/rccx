@@ -56,5 +56,6 @@ Update to 0.0.3:
 - added logging into /tmp/rccx.log
 - single module monolythic build
 - no Python, no startscript anymore
+- <defunct> zombie processes fixed
 
 [Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)
