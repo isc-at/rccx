@@ -52,4 +52,9 @@ Instance 'IRIS'   (default)
         product:      InterSystems IRIS
 $
 ~~~
+Update to 0.0.3: 
+- added logging to /tmp/rccx.log
+- single module build
+- no Python, no startscript
+
 [Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)
