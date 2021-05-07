@@ -54,7 +54,7 @@ $
 ~~~
 Update to 0.0.3: 
 - added logging to /tmp/rccx.log
-- single module build
-- no Python, no startscript
+- single module monolythic build
+- no Python, no startscript anymore
 
 [Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)
