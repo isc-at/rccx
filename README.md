@@ -53,7 +53,7 @@ Instance 'IRIS'   (default)
 $
 ~~~
 Update to 0.0.3: 
-- added logging to /tmp/rccx.log
+- added logging into /tmp/rccx.log
 - single module monolythic build
 - no Python, no startscript anymore
 
