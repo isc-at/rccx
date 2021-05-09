@@ -13,7 +13,7 @@ act
 	use 0 read "?> :",cmd,!,"?"
 	if cmd="***" set cmd="###stop###",stop=2
 	else  if cmd="." set cmd="#",stop=1
-	else  id cmd="?" do dump goto act
+	else  if cmd="?" do dump goto act
 	else  if cmd="" goto act
 	use tcp write cmd,! 
 	if stop close tcp quit
