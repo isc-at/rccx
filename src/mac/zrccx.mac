@@ -1,5 +1,5 @@
 ROUTINE zrccx [Type=MAC]
-zrccx ; # Run Container Command eXecution
+zrccx ; # Run Container Command eXecution !! must be in %SYS !!
 	write "start Run Container Command eXecution",!
 		,"server = localhost,  port = 6666",!
 		
