@@ -1,4 +1,4 @@
-#### first we login into IRIS and do ^zrxxx   
+#### first we login into IRIS and do ^zrccx   
 ~~~
 C:\GitHub\zrccx>docker-compose exec iris iris session iris -U "%SYS"  
 Node: 32842aedd3c5, Instance: IRIS   
@@ -9,7 +9,7 @@ server = localhost,  port = 6666
 Enter bash command [?=dump logfile, .=exit, ***=stop executor & exit]
 ??> :   
 ~~~
-#### next we run some listing   
+#### next we run some listing and check the log   
 ~~~
 ??> :    
 ??> :ls -la /   
