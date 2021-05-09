@@ -23,5 +23,5 @@ dump	;; view log file
 	set str=##class(%Stream.FileCharacter).%New()
 	set sc=str.LinkToFile("/tmp/rccx.log")
 	while 'str.AtEnd {set lin=str.ReadLine() write !,"$>",lin }
-	write !,"$> *************** done **************",!!,"$"
+	write !,"$> *************** done **************",!!,"?"
         kill str quit  
