@@ -48,18 +48,19 @@ $?> :
 ~~~
 ??> :
 ??> :ls -la /root ; whoami
->#
->$>ls: cannot open directory '/root': Permission denied
->$>irisowner
+$>#
+$>ls: cannot open directory '/root': Permission denied
+$>irisowner
 $> *************** done **************
 ??> :          
 ~~~
-#### $ in postion 1 changes the view
+#### $ in position 1 changes the view
 ~~~
 ??> :
 ??> :$ls -la /root ; whoami
 ??> :?
-$>#$>total 24
+$>#
+$>total 24
 $>drwx------ 1 root root 4096 Oct 22  2020 .
 $>drwxr-xr-x 1 root root 4096 May  9 11:02 ..
 $>-rw-r--r-- 1 root root 3106 Apr  9  2018 .bashrc
@@ -71,4 +72,40 @@ $> *************** done **************
 ??> :
 ~~~   
 
-Q.A.D.
+#### and even this is possible
+~~~
+??> :iris view
+??> :iris restart iris quietly
+??> :See you!  <<<---- webterminal stops
+
+%SYS > ;; after restart terminal
+%SYS > do ^zrccx 
+start Run Container Command eXecution
+server = localhost,  port = 6666
+Enter bash command [?=dump logfile, .=exit, ***=stop executor & exit]
+??> :date
+??> :?
+?
+$>#
+$>
+$>Instance 'IRIS'   (default)
+$>      directory:    /usr/irissys
+$>      versionid:    2020.4.0.524.0com
+$>      datadir:      /usr/irissys
+$>      conf file:    iris.cpf  (SuperServer port = 1972, WebServer = 52773)
+$>      status:       running, since Sun May  9 11:38:41 2021
+$>      state:        alert
+$>      product:      InterSystems IRIS
+$>#
+$>This copy of InterSystems IRIS has been licensed for use exclusively by:
+$>InterSystems IRIS Community
+$>Copyright (c) 1986-2020 by InterSystems Corporation
+$>Any other use is a violation of your license agreement
+$>Starting IRIS
+$>
+$>#
+$>Sun May  9 11:44:54 UTC 2021
+$> *************** done **************
+??> :
+~~~
+#### Q.A.D.
