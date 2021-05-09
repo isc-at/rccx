@@ -18,7 +18,7 @@ act
 	if stop close tcp quit
 	goto act 
 	
-dump	; view log file
+dump	;; view log file
 	set str=##class(%Stream.FileCharacter).%New()
 	set sc=str.LinkToFile("/tmp/rccx.log")
 	while 'stream.AtEnd {set lin=stream.ReadLine() write "$>",lin,!}
