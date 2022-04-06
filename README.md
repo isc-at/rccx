@@ -58,4 +58,6 @@ Update to 0.0.3:
 - no Python, no startscript anymore
 - <defunct> zombie processes fixed
 
-[Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)
+[Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)   
+
+[Demo Server](https://rccx.contest.community.intersystems.com/csp/sys/UtilHome.csp)
