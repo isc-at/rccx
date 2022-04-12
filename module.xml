@@ -4,7 +4,7 @@
     <Module>
       <Name>run-container-command-execution</Name>
 	  <Description>Run Command in Container</Description> 
-      <Version>0.0.5</Version>
+      <Version>0.0.6</Version>
       <Packaging>module</Packaging>
       <SourcesRoot>src</SourcesRoot>
       <Resource Name="zrccx.MAC"/>
