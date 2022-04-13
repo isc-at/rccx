@@ -61,6 +61,7 @@ Update to 0.0.3:
 [Article in DC](https://community.intersystems.com/post/how-execute-iris-restart-inside)   
 
 [Demo Server SMP](https://rccx.contest.community.intersystems.com/csp/sys/UtilHome.csp)
+[Demo Server WebTerminal](https://rccx.contest.community.intersystems.com/terminal/)
 
 **Code Quality**  
 <img width="85%" src="https://openexchange.intersystems.com/mp/img/packages/1343/screenshots/dngt6utcmfuu8wscxxaewvqlvu.jpg">       
