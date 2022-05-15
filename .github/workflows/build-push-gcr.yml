@@ -1,4 +1,4 @@
-#name: Cloud Run Deploy
+name: Cloud Run Deploy
 
 on:
   push:
@@ -9,16 +9,15 @@ on:
 env:
   # Change this section according to your needs
   IMAGE_NAME:   rccx
-  SERVICE:      deploy-demo
-  DOMAIN_NAME:  rccx.contest.community.intersystems.com
-
-  # Leave this section untouched
-  PROJECT_ID:   hackathon-297608
-  CLUSTER_NAME: contest
+  SERVICE:      rccx
+  DOMAIN_NAME:  rccx.demo.community.intersystems.com
+# Leave this section untouched
+  PROJECT_ID:   iris-community-demos
+  CLUSTER_NAME: demo
   GITHUB_SHA:   ${{ github.sha }}
   GCR_LOCATION: eu.gcr.io
   REGION:       europe-west2
-  NAMESPACE:    contest
+  NAMESPACE:    demo
 
 jobs:
   deploy-cloud-run:
@@ -27,7 +26,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
- 
+
     - name: Setup Cloud SDK
       uses: google-github-actions/setup-gcloud@v0.2.0
       with:
@@ -37,10 +36,10 @@ jobs:
     - name: Authorize Docker push
       run: gcloud auth configure-docker
 
+
     - name: Build and Push image
       run: |
-        docker build -t ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA} .
-        docker push ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA}
+        docker buildx build -t ${GCR_LOCATION}/${PROJECT_ID}/${IMAGE_NAME}:${GITHUB_SHA} --push .
     - name: Deploy to Cloud Run
       run: |
         echo "[INFO] Set google project..."
